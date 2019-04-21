@@ -1,0 +1,7 @@
+python爬虫笔记
+
+爬虫的原理的模仿浏览器发送http请求，然后得到http响应的数据，然后把这些非结构的数据变成结构的数据储存
+
+pyhon中引request包摸理浏览器
+得到里面的内容后用beatifulsoup提取里面的内容，相当于jquery
+可以用jupyter做编辑器
