@@ -1,0 +1,7 @@
+mvn构建springmvc流程
+ 1 mvn命令创建web骨架项目  mvn archetype:generate -DgroupId=org.cesshop -DartifactId=cesshop -DarchetypeArtifactId=maven-archetype-webapp 
+2 用idea导入
+默认的web.xml中是2.3 不支持jsp el表达式，去tomcat excample中找例子 
+3 补全maven项目的文件夹 例如 java文件夹  test文件夹
+4 改pom.xml默认junit依赖 改成4.11 可以使用注解
+  补全依赖
