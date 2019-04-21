@@ -1,0 +1,30 @@
+docker笔记
+可以粗糙的理解为虚拟机
+docker安装 wget -qO- http:.......|sh
+后面接sh可以直接安装
+docker run ....
+运行容器
+docker stop ...
+停止容器
+docker ps
+正在运行的容器
+ 
+创建docker镜像image
+dockerfile
+
+volume
+提供独立于容器之外的独立储存，还能提供给容器之间共享的数据
+
+registry  镜像仓库
+
+ 
+ 
+docker 多容器的应用
+docker compose
+ 
+
+ 
+个人总结：镜像应该就是原程序的一个映射
+	   容器应该就是镜像运行的一个环境
+	  volume应该就是持久化配置
+ 
