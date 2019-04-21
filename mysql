@@ -1,0 +1,43 @@
+mysql安装后可以再去bin文件夹.setting里面修改一些配置
+要想mysql清楚干净，还需要 sc delete mysql
+windows无法启动mysql 系统找不到指定文件 这是由于你服务的路径和你安装的路径不一致造成的，你需要修改下注册表
+ 修改root 密码 SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpass')
+开启/关闭服务在我的电脑-》服务
+在cmd中启动mysql mysql -uroot -p**** 
+更改提示符 原来是mysql> 可以prompt 改
+mysql自带4个数据库，需要create database,alter database,drop database,oracle安装时自动创建了一个数据库，一般在该实例里面新增多个用户
+mysql数据类型 数值型 TINYINT、MEDIUMINT和BIGINT、INT、FLOAT[(M,D)],DOUBLE[(M,D)]  （ORACLE number()）
+		时间型 DATETIME、DATE、TIMESTAMP、TIME和YEAR (ORACLE date)
+		字符型 CHAR、VARCHAR、BINARY、VARBINARY、BLOB、TEXT、ENUM和SET (oracle char varchar)
+mysql 创建表时 可为创建的字段添加约束 key(unsigned primary key\unique key\forign key)、 (null\not null) 、default 。auto increment(只在主键中使用)
+mysql 会为key添加默认的名字 show create table tablename可以查看到 oracle也一样 select * from user_constraints t where t.name=''可以查看
+修改mysql的字段定义和约束 alter table tablename (add drop changge alter).... 一般情况不会改列名和表名，会影响到索引、存储过程等
+oracle的修改不一样，在plsql中点击查看表-》查看sql语句可以看到
+mysql的分页比较简单 使用的是LIMIT select * from table t limit 2,2(表示从该表的第3行起，取两行数据)
+mysql中也有in 有= <> != 例如 select * from table t where t.billid =(ANY、SOME任意)ALL所有（select billid from table t）
+mysql 多表更新（多表删除类似） 更新一个表的字段涉及另一个表 update tabel join table t2 set .....
+on 是设定连接条件 where 是结果集的过滤
+inner join 表示的是a表和b表的交集
+left join 表示a表的全部和b表符合条件的数据
+right join 表示a表符合条件的数据和a表的全部
+mysql 的 group by 居然支持非聚合函数操作！！！！ 非聚合字段匹配检索的第一个值
+mysql concat()字符连接函数
+	concat_ws(‘-’，....)指定连接福连接字符
+	trim（）去除空格
+	ltrim()去除左侧空格
+	rtrim()去除右侧空格
+	substring()截取字符串
+	replace('mysql','my','you')替换字符串
+	_表示任意一个字符，%表示任意字符 select * from table t where t.name like '%1%%' escape "1"
+	div 3 div 4 结果为0  
+	mod 3 mod 4  取模
+	truncte 数字截取
+	now()当前时间
+	curdate() curtime()
+	date_format()
+	聚合函数的返回值只有一个  avg()表示平均值 
+	数据加密函数 md5()
+mysql 为什么使用存储过程，跟灵活，可以使用循环的逻辑，执行效率较多条sql更加快，只用引擎编译一次
+mysql 存储过程中的参数后面居然是可以修饰的，比如 float(2,3)
+mysql 写存储过程前要delimited //??
+mysql create produre a (in bl int ,out bl2 int)  调用时要用 call a(1,@bl);  select @bl;
