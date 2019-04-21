@@ -1,0 +1,42 @@
+git笔记
+1.去官网下载git软件
+2.命令行配置用户 进入git.bash config --global user.name 'yj'
+			         config --global user.email 'yj@.com'
+也可gui界面配置 用sourcetree软件
+3,.图形化初始化git仓库，添加文件，提交文件
+ 命令行 makdir ./testdemo
+cd ./testdemo        
+git init   //初始这个文件夹问仓库
+echo 'test'>>test.text 创建一个文件
+git add test.text //添加该文件
+git commit -m 'firstcommit' //提交 -m表示备注
+git 分为本地的工作去 缓存区 本地仓库 远程仓库
+ 
+git reomote远程仓库
+利用ssh协议创建key  先在本地执行ssh命令 会将key储存到一个文件中
+然后本地仓库和远程仓库关联 git remote add orgin git@github.com ..... orgin代表远程的意思
+git push 把本地仓库推到远程仓库
+git pull 把远程仓库的东西放到本地仓库
+
+克隆仓库(感觉有点像svn的checkout)
+git clone git@github.com:yuanjun/gitrespoty.git
+
+标签管理（标签的意义在于方便回滚到某一版本）
+git tag //查看
+git tag name //创建tag
+git push origin tagname 推送标签到远程仓库
+git tag -d name //删除标签
+
+分支管理
+git branch testfz  //创建一个分支
+git checkout testfz //切换分支，默认为master分支
+git merge testfz 把testfz合并到master分支
+
+分支还是比较重要的
+ 
+
+ 
+
+
+git关联
+可以现在github上clone一个新的文件夹，然后再在本地提交，试过了可以
