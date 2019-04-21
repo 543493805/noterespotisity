@@ -1,0 +1,38 @@
+execute immediate中间不要用下划线
+参数 如number后面不用带数字
+'''' 表示 字符串里面有个'
+定义一个变量为varchar是不要和0去判断
+时间转字符 to_char(sysdate,'yyyymmdd')
+时间转时间 trunc(sysdate) 
+转数字 to_number(to_char(sysdate,'yyyymmdd'))
+字符转时间 to_date
+with tmptable as() 创建一个临时表
+视图里面也可以加存储过程
+oracle也可以正则表达 regexp_*
+varchar2最大上限4000
+游标在包中定义，代表全局
+存储过程中空格也会占字符
+调试时查看参数的数值可单击右键
+WM_CONCAT 得到的类型是bolb类型，可用to_char转换 in的时候不用此方法
+查询数据库表用user_table，查询数据库列用cols
+存储过程后面加 AUTHID CURRENT_USER 表示以调用者的身份执行
+dbms_job.submit()数据库定时任务
+=> 标识给参数赋值
+=：
+group by 后面的having 就相当于where 
+case when(相当于if)  1=1 then 
+else
+end
+substr instr(定位)  trim(去空格)函数  
+唯一索引约束 该字段不允许有相同值
+条件语句后 =t.** 不可用，除非使用exists 或者表关联
+v_name column%type
+v_name table%rowtype
+插数据时一定要注意空格!!!!!
+exists没有in快
+imp system/** file='' fromuser='' touser  从一个用户导入另一个用户
+触发器 rasie application error()
+输出的游标不需要关闭
+导出表、存储过程 工具-》导出用户对象
+ 存储过程中游标的创建，和包里面的创建不同 ，包是type rfcursor is ref cursor;存储过程是 CURSOR C_EMP IS --声明显式游标  
+    SELECT * FROM dc_check_todo; 
