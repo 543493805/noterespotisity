@@ -1,0 +1,37 @@
+spring cloud笔记
+1、创建服务注册与发现中心
+1.1 首先创建一个maven主工程。
+
+首先创建一个主Maven工程，在其pom文件引入依赖，spring Boot版本为2.0.3.RELEASE，Spring Cloud版本为Finchley.RELEASE。这个pom文件作为父pom文件，起到依赖版本控制的作用，其他module工程继承该pom，pom 里面的modules作用如下
+如果我们的项目分成了好几个模块，那么我们构建的时候是不是有几个模块就需要构建几次了（到每个模块的目录下执行mvn命令）？当然，你逐个构建没问题，但是非要这么麻烦的一个一个的构建吗，那么简单的做法就是使用聚合，一次构建全部模块。
+
+1.2 然后创建2个model工程:一个model工程作为服务注册中心，即Eureka Server,另一个作为Eureka Client。
+创建一个服务提供者 (eureka server)
+通过eureka.client.registerWithEureka：false和fetchRegistry：false来表明自己是一个eureka server.
+
+创建一个服务提供者 (eureka client)
+当client向server注册时，它会提供一些元数据，例如主机和端口，URL，主页等。Eureka server 从每个client实例接收心跳消息。 如果心跳超时，则通常将该实例从注册server中删除。
+还需要在配置文件中注明自己的服务注册中心的地址，application.yml配置
+
+
+创建过程同server类似
+在微服务架构中，业务都会被拆分成一个独立的服务，服务与服务的通讯是基于http restful的。Spring cloud有两种服务调用方式，一种是ribbon+restTemplate，另一种是feign
+
+
+ribbon是一个负载均衡客户端，也是一个eurake client,可以很好的控制htt和tcp的一些行为。Feign默认集成了ribbon。
+调用方式restTemplate.getForObject("http://service-hi/sayHi",String.class);
+
+
+Feign 采用的是基于接口的注解
+Feign 整合了ribbon，具有负载均衡的能力
+整合了Hystrix，具有熔断的能力
+
+
+zuul
+
+
+ 
+
+在Spring Cloud微服务系统中，一种常见的负载均衡方式是，客户端的请求首先经过负载均衡（zuul、Ngnix），再到达服务网关（zuul集群），然后再到具体的服。，服务统一注册到高可用的服务注册中心集群，服务的所有的配置文件由配置服务管理（下一篇文章讲述），配置服务的配置文件放在git仓库，方便开发人员随时改配置。
+Zuul的主要功能是路由转发和过滤器。路由功能是微服务的一部分，比如／api/user转发到到user服务，/api/shop转发到到shop服务。zuul默认和Ribbon结合实现了负载均衡的功能。
+zuul不仅只是路由，并且还能过滤，做一些安全验证。
