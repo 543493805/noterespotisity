@@ -1,0 +1,16 @@
+active mq
+中间件：不直接给用户用
+
+jms(java message service)
+
+amqp(rabbitmq)
+
+kafka 日志储存
+
+jms编码接口关系
+
+connectionfactory-connection-session-messageproducer-messageconsumer-destination
+
+active集群
+master/slave 高可用 一个节点挂掉可以另一个节点代替
+broker cluster 负载均衡
