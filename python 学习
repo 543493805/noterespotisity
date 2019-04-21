@@ -1,0 +1,190 @@
+python 
+功能 
+	1、网络应用，包括网站、后台服务等等
+	2、小工具，包括系统管理员需要的脚本任务等等；
+	3、把其他语言开发的程序再包装起来，方便使用。
+缺点
+	1、是运行速度慢，和C程序相比非常慢，因为Python是解释型语言
+安装
+	在Windows上运行Python时，请先启动命令行，然后运行python。
+
+	在Mac和Linux上运行Python时，请打开终端，然后运行python3。
+
+解释器
+	CPython是使用最广的Python解释器。教程的所有代码也都在CPython下执行。
+pytyon文件为后缀名.py的文件
+windows 运行python方法 python 目录下的.py文件 （和java差不多，但是不用javac）
+linuxs运行python 方法是在.py文件的第一行加上一个特殊的注释：
+
+	#!/usr/bin/env python3
+输入
+	print('hello, world')
+输入 输出
+	print()会依次打印每个字符串，遇到逗号“,”会输出一个空格，因此，输出的字符串是这样拼起来的：
+	input()为输入 name = input()
+数据类型
+	整数、浮点数、字符串、布尔值（not运算是非运算）空值（是Python里一个特殊的值，用None表示）、变量、常量。
+	a = 'ABC' Python解释器干了两件事情：
+
+	在内存中创建了一个'ABC'的字符串；
+
+	在内存中创建了一个名为a的变量，并把它指向'ABC'。
+
+	也可以把一个变量a赋值给另一个变量b，这个操作实际上是把变量b指向变量a所指向的数据
+ascll码 字母什么的对应一个byte数（个人感觉key-value）
+unicode 无论字母还是中文 都对应2个byte数
+utf-8   对应可变的byte数，字母对应一个byte数，中文可能对应几个
+格式化  %d	整数
+	 %f	浮点数
+	 %s	字符串
+	 %x	十六进制整数
+	print('%2d-%02d' % (3, 1))
+List  
+	 classmates = ['Michael', 'Bob', 'Tracy']
+	list里面的元素的数据类型也可以不同，比如： L = ['Apple', 123, True]
+	增 classmates .append('aa')
+	查 classmates .get(1) classmates .get(-1)查最后一个
+	删 classmates .pop() classmates .pop(2)
+
+tuple
+	tuple和list非常类似，但是tuple一旦初始化就不能修改
+	 classmates = ('Michael', 'Bob', 'Tracy')
+dict
+	dict全称dictionary，在其他语言中也称为map，使用键-值（key-value）存储，具有极快的查找速度
+	>>> d = {'Michael': 95, 'Bob': 75, 'Tracy': 85} (有点像json)
+	>>> d['Michael']
+	95
+	增：d['Adam'] = 67
+	查：d.get('Adam')
+	删：d.pop('Adam')
+条件判断 注意：号
+	age = 3
+	if age >= 18:
+ 	   print('your age is', age)
+   	   print('adult')
+	else:
+  	  print('your age is', age)
+   	  print('teenager')
+循环有两种
+	names = ['Michael', 'Bob', 'Tracy']
+1、	for name in names:
+   	    print(name)
+	range(5)为0-5的数，再用list()函数可以转为list
+2、	sum = 0
+	n = 99
+	while n > 0:
+   	  sum = sum + n
+    	  n = n - 2
+	print(sum)
+函数
+	1、内置函数 和java思想一样
+	2、定义函数
+		def my_abs(x):
+    		    if x >= 0:
+       		 return x
+   		    else:
+       		 return -x
+	3、函数的参数
+		固定参数 入 def test(a)
+		默认参数 如 def test(a=1):
+		可变参数 如 def test(*a): 相当于集合list tuple 调用时 test(1,2) 或者 test(*(1,2,3))
+		关键字参数如 def test(**a): 相当于dict 还有 def test(*,a,b) 表示关键字参数中必须还有 a b关键字 调用时 test(a=1,b=2)也可以test(**{'a':1,'b':2})
+切片操作
+	list[0:1] 截取list第0个和第1个  list[:-1] 截取0-倒数第一个 string[0:1]用法一样
+列表生成器
+	L=['2',1]
+	a for a in L if isinstance(a,str)==True  切记True 首字符大写
+生成器 generator
+	def fib(max):
+  	  n, a, b = 0, 0, 1
+        while n < max:
+       	 yield b
+       	 a, b = b, a + b
+       	 n = n + 1
+   	 return 'done'
+迭代器
+	凡是可作用于for循环的对象都是Iterable类型；
+
+	凡是可作用于next()函数的对象都是Iterator类型，它们表示一个惰性计算的序列；
+
+	集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对象。
+
+	Python的for循环本质上就是通过不断调用next()函数实现的，
+map() map(f,['2','b']) 把第二个参数里的值当做第一个函数的参数 返回的iterable
+reduce reduce(f,['a','b','c']) f为两个参数 f(a,b)后的结果ab 再f(ab,c)
+filter filter(f,['1','2',‘3’]) 通过f返回的true或false 来返回‘1’，‘2’，‘3’
+sorted sorted((1,2,3,4),key=func) 把1,2,3,4,逐个当做func的参数 返回一个结果 这些结果sort排序 排序后在对应相应的1,2,3,4
+闭包函数 不懂哦！！！！！！！！！！
+匿名函数 lambda x:x*x
+偏函数 func=functools.partial(int,base=2) 偏函数是把某个参数固定住为一个值
+模块 python有许多内置模块，相当于java的jar包 _func 相当于私有函数 
+	if _name_=='main'
+		test()
+       相当于java中的main函数
+第三方模块 可以从Anaconda官网下载GUI安装包，安装包有500~600M，所以需要耐心等待下载。网速慢的同学请移步国内镜像。下载后直接安装，Anaconda会把系统Path中的python指向自己自带的Python，并且，Anaconda安装的第三方模块会安装在Anaconda自己的路径下，不影响系统已安装的Python目录
+继承，封装，多态 和java类似 
+	class Dog(Animal):
+   	    pass
+       和java不同，不一定要传父类是animal的类进去，只要给类跟animal一样有run方法就行
+实例属性和类属性 有点类似于static 定义类属性
+class test():
+	count=0
+实例属性 a=test()
+	   a.name='4'
+动态绑定属性的时候 如果类中有参数 _slots_=('name','count') 就只能绑定name和count
+
+继承 python支持多重继承 class test(animal,bird):
+
+动态语言和静态语言最大的不同，就是函数和类的定义，不是编译时定义的，而是运行时动态创建的
+
+定制类 生成类对象是会默认调用一些特定的方法，重写那些方法，就叫定制类
+ 
+python解释器遇到class定义时，仅扫描下class语法，然后调用type函数创建class
+
+Python内置的try...except...finally用来处理错误十分方便。出错时，会分析错误信息并定位错误发生的代码位置才是最关键的。
+
+python 错误调试 print  logging ide :visul studio装插件 pycharm  eclipse装插件
+
+io stringio btyeio
+
+ 
+在Unix/Linux下，可以使用fork()调用实现多进程。
+
+要实现跨平台的多进程，可以使用multiprocessing模块。
+
+进程间通信是通过Queue、Pipes等实现的。
+
+值传递和引用传递都是根据方法引用的是复制参数还是引用地址
+
+多线程编程，模型复杂，容易发生冲突，必须用锁加以隔离，同时，又要小心死锁的发生。
+
+Python解释器由于设计时有GIL全局锁，导致了多线程无法利用多核。多线程的并发在Python中就是一个美丽的梦。
+
+我们强烈建议使用Python的r前缀，就不用考虑转义的问题了：
+
+s = r'ABC\-001' # Python的字符串
+
+在计算机中，时间实际上是用数字表示的
+
+Base64编码会把3字节的二进制数据编码为4字节的文本数据
+
+ 
+Base64是一种任意二进制到文本字符串的编码方法，常用于在URL、Cookie、网页中传输少量二进制数据。
+
+网络通信是两台计算机上的两个进程之间的通信
+
+了解了HTTP协议和HTML文档，我们其实就明白了一个Web应用的本质就是：
+
+浏览器发送一个HTTP请求；
+
+服务器收到请求，生成一个HTML文档；
+
+服务器把HTML文档作为HTTP响应的Body发送给浏览器；
+
+浏览器收到HTTP响应，从HTTP Body取出HTML文档并显示。
+
+ 
+
+pip --default-timeout=100 install -U Pillow
+
+鼠标点击事件的包 第一需要pyhook 然后pip install pyuserinput!!!!!!!!!!!!!!!!!1
