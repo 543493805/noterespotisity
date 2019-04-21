@@ -1,0 +1,26 @@
+高并发课程学习
+1、搭建ssm
+日志采用sl4j和logback sl4j是日志规范接口，logback是实现
+mybatis xml中 select a.*,b.test "object.test" from a left join b on a.id=b.id 该写法可以把 实体类中的object的test赋值
+md5加密是可以加个盐值，更难破解
+spring定义bean时，当不确定是serverce,还是control，可用component
+spring配置声明式事务 tx:aop命名空间   @tranction
+spring的事务回滚是发生在运行期异常，所以要小心运用try catch
+V 
+ 
+如果sevrvice中只有一条sql执行时，不需要事务
+java中产生的异常也是通过 throw new runexcetion()
+spring mvc @requestmapping注解 支持标准的url 支持？和*号 支持{userid}占位符
+js中也可以设置cookie，并且可以设置在哪个url中有效
+什么是跨越，就是浏览器的安全策略，有些js不允许使用
+$().hide.html().show有点意思
+javascript尽量模块化
+ 
+ 
+优化方案：cdn
+redis
+java序列化，把对象转换为二进制的数组  使用protostruff性能高，生成的数组少   redis内部没有实现序列化  redis客户端看到的是一个二进制数组tostring
+调用存储过程 mybatis  用select标签   属性 statement="callable"   
+nginx 反向代理
+rabbitmq
+tddl分库分表
