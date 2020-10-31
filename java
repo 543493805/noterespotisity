@@ -20,3 +20,4 @@ java实现并发 是使用单一的进程的线程
 Vector/Hashtable类StringBuffer是线程安全
 
 
+io nio   从线程方面去分析他们的不同，单线程，io是阻塞的
