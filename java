@@ -21,3 +21,6 @@ Vector/Hashtable类StringBuffer是线程安全
 
 
 io nio   从线程方面去分析他们的不同，单线程，io是阻塞的
+
+
+Java thread interrupt 只是一个标示，并不会中断
